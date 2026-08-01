@@ -1,66 +1,76 @@
-# dentcolor
+dentcolor
 
-Implementação em código aberto de conversão **CIELAB ↔ sRGB** e cálculo de diferença de cor **CIEDE2000 (ΔE00)**, escrita para uso em odontologia estética.
+Implementação em código aberto de conversão CIELAB ↔ sRGB e cálculo de diferença de cor CIEDE2000 (ΔE00), escrita para uso em odontologia restauradora e estética.
 
-O pacote alimenta o simulador de cor disponível em
-<https://www.lentedecontatodental.poa.br/simulador-de-cor/>
+Disponível em duas versões numericamente equivalentes: Python (dentcolor.py) e JavaScript (dentcolor.js).
 
----
+O pacote alimenta o simulador de cor disponível em https://www.lentedecontatodental.poa.br/simulador-de-cor/
 
-## O que faz
+Escopo
 
-- Conversão entre coordenadas CIELAB e sRGB
-- Cálculo de ΔE00 pela fórmula CIEDE2000
-- Rotinas de apoio para representação visual de escalas de cor dental
+Esta biblioteca fornece método, não dados.
 
-## O que não faz
+Ela implementa as transformações colorimétricas e a fórmula de diferença de cor. Ela não acompanha tabela de coordenadas L*a*b* de nenhuma escala de cor comercial. Quem for usar precisa fornecer as próprias coordenadas, medidas em espectrofotômetro ou obtidas de fonte que possa citar.
+
+Essa separação é deliberada. Coordenadas de escalas comerciais variam conforme lote, instrumento, geometria de medição e condição de iluminação. Embutir uma tabela fixa daria ao usuário uma precisão que ela não tem.
+
+O que faz
+Conversão entre coordenadas CIELAB e sRGB
+Cálculo de ΔE00 pela fórmula CIEDE2000 (CIE 142:2001)
+Ponto branco D65, observador padrão 2°
+
+A versão JavaScript é porte da implementação de referência em Python, com concordância verificada abaixo de 1e-9 em ΔE00.
+
+O que não faz
 
 Não substitui espectrofotometria. As cores exibidas em tela dependem de calibração do monitor, do perfil de cor do sistema e das condições de iluminação do ambiente. Qualquer decisão clínica de cor deve ser tomada com instrumento adequado e sob condições controladas.
 
----
+Limiares de perceptibilidade e aceitabilidade
 
-## Procedência das coordenadas da escala VITA
+O pacote expõe duas constantes de referência:
 
-> **Leia antes de reutilizar.** As coordenadas L\*a\*b\* da escala VITA embutidas neste código foram obtidas por levantamento em fontes secundárias e **não foram verificadas pelo autor contra documentação técnica primária do fabricante nem contra medição própria em espectrofotômetro**.
->
-> Elas servem para demonstração e ensino. Se você pretende usar este código para pesquisa, para comparação de materiais ou para qualquer finalidade em que a exatidão colorimétrica importe, verifique os valores contra a documentação oficial da VITA Zahnfabrik ou meça diretamente as escalas antes de confiar nos resultados.
->
-> Correções são bem-vindas por *issue* ou *pull request*, preferencialmente com indicação da fonte primária.
+Constante	Valor (ΔE00)	Significado
+PERCEPTIBILITY_THRESHOLD	0,8	Limiar 50:50% de perceptibilidade
+ACCEPTABILITY_THRESHOLD	1,8	Limiar 50:50% de aceitabilidade
 
-Essa ressalva está aqui de propósito. Um simulador de cor que não declara a origem dos seus valores de referência convida a erros que não aparecem na tela.
+Esses valores não são arbitrários nem próprios deste pacote. Provêm de:
 
----
+Paravina RD, Ghinea R, Herrera LJ, Bona AD, Igiel C, Linninger M, Sakai M, Takahashi H, Tashkandi E, Perez MdelM. Color difference thresholds in dentistry. Journal of Esthetic and Restorative Dentistry. 2015;27 Suppl 1:S1-9. DOI: 10.1111/jerd.12149 · PMID: 25886208
 
-## Como citar
+Estudo multicêntrico prospectivo com 175 observadores em sete centros, que reporta os limiares 50:50% de perceptibilidade e aceitabilidade para cerâmica odontológica em CIELAB e em CIEDE2000.
+
+Ressalva de uso. Os limiares foram determinados para cerâmica monocromática em cabine de visualização, sob condição controlada. Eles servem como referência de controle de qualidade, não como critério clínico automático. O próprio estudo relata diferença estatisticamente significativa entre grupos de observadores: dentistas, técnicos, auxiliares e leigos não julgam igual. Aplicar um número único a toda situação clínica ignora essa variabilidade.
+
+Como citar
 
 A versão arquivada e citável deste pacote está depositada no Figshare, com DOI permanente:
 
-> Borille, M. **dentcolor**: implementação CIELAB/sRGB e CIEDE2000 para odontologia estética. Figshare, 2026.
-> DOI: [10.6084/m9.figshare.33087674](https://doi.org/10.6084/m9.figshare.33087674)
+Borille, MB. dentcolor: implementação CIELAB/sRGB e CIEDE2000 para odontologia estética. Figshare, 2026. DOI: 10.6084/m9.figshare.33087674
 
 Prefira citar o DOI, não a URL deste repositório. Repositórios podem ser renomeados ou movidos; o DOI não.
 
----
+O botão Cite this repository, no topo desta página, gera a citação formatada a partir do arquivo CITATION.cff.
 
-## Licença
+Licença
 
-MIT. Veja o arquivo [LICENSE](LICENSE).
+MIT. Veja o arquivo LICENSE.
 
 Você pode usar, modificar e redistribuir, inclusive comercialmente, mantendo o aviso de copyright e a ressalva de garantia.
 
----
+Contribuições
 
-## Autor
+Correções são bem-vindas por issue ou pull request. Para correções de valores de referência ou de citação, indique a fonte primária.
 
-**Marcelo Barboza Borille** · Cirurgião-Dentista, CRO-RS 14520
-ORCID: [0009-0000-5422-207X](https://orcid.org/0009-0000-5422-207X)
+Autor
 
----
+Marcelo Barboza Borille · Cirurgião-Dentista, CRO-RS 14520 ORCID: 0009-0000-5422-207X
 
-## English summary
+English summary
 
-Open-source implementation of **CIELAB ↔ sRGB** conversion and **CIEDE2000 (ΔE00)** colour difference, written for use in esthetic dentistry. Powers the colour simulator at the URL above.
+Open-source implementation of CIELAB ↔ sRGB conversion and CIEDE2000 (ΔE00) colour difference, written for restorative and esthetic dentistry. Available in equivalent Python and JavaScript versions.
 
-**Important:** the VITA shade guide L\*a\*b\* coordinates embedded in this code were compiled from secondary sources and have **not** been verified by the author against the manufacturer's primary technical documentation or against own spectrophotometric measurement. They are adequate for demonstration and teaching. Verify them before using this code where colourimetric accuracy matters.
+Scope: this library provides method, not data. It ships no L*a*b* coordinate table for any commercial shade guide. Users must supply their own coordinates, measured with a spectrophotometer or drawn from a citable source.
 
-Archived, citable version: DOI [10.6084/m9.figshare.33087674](https://doi.org/10.6084/m9.figshare.33087674). MIT licensed.
+The two exported thresholds (ΔE00 0.8 for perceptibility, 1.8 for acceptability) come from Paravina RD et al., Color difference thresholds in dentistry, J Esthet Restor Dent 2015;27 Suppl 1:S1-9, DOI 10.1111/jerd.12149. They were determined for monochromatic dental ceramic under controlled viewing conditions and serve as quality-control references, not as automatic clinical criteria.
+
+Archived, citable version: DOI 10.6084/m9.figshare.33087674. MIT licensed.
