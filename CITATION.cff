@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "Se você usar este software, por favor cite o depósito arquivado no Figshare (DOI abaixo), não a URL deste repositório."
+title: "dentcolor"
+abstract: >-
+  Implementação em código aberto de conversão CIELAB para sRGB e cálculo de
+  diferença de cor CIEDE2000 (ΔE00), escrita para uso em odontologia estética.
+  As coordenadas da escala VITA embutidas no pacote provêm de fontes
+  secundárias e não foram verificadas contra documentação primária do
+  fabricante; ver README.
+type: software
+license: MIT
+
+authors:
+  - family-names: "Borille"
+    given-names: "Marcelo Barboza"
+    orcid: "https://orcid.org/0009-0000-5422-207X"
+    affiliation: "Pesquisador independente, Porto Alegre, RS, Brasil"
+
+identifiers:
+  - type: doi
+    value: 10.6084/m9.figshare.33087674
+    description: "Versão arquivada e citável no Figshare"
+
+repository-code: "https://github.com/mborille/dentcolor"
+url: "https://www.lentedecontatodental.poa.br/simulador-de-cor/"
+
+keywords:
+  - CIELAB
+  - CIEDE2000
+  - color difference
+  - dental shade
+  - esthetic dentistry
+  - colorimetry
+  - sRGB
+
+date-released: 2026-07-25
