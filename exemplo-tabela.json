@@ -1,0 +1,19 @@
+{
+  "name": "EXEMPLO — não use estes números",
+  "manufacturer": "n/a",
+  "version": "exemplo-1",
+  "provenance": {
+    "status": "estimated",
+    "method": "Valores inventados apenas para demonstrar o formato do arquivo. Não representam nenhuma escala real e não devem ser usados em clínica, ensino ou publicação.",
+    "instrument": "nenhum",
+    "illuminant": "D65",
+    "observer": "2deg",
+    "replicates": 0,
+    "notes": "Substitua por medições próprias ou por dados de fonte publicada e citada antes de qualquer uso real."
+  },
+  "shades": [
+    { "name": "EX-1", "group": "exemplo", "L": 78.0, "a": 0.5, "b": 15.0, "sd_L": 0.4, "sd_a": 0.1, "sd_b": 0.3, "n": 30 },
+    { "name": "EX-2", "group": "exemplo", "L": 73.0, "a": 2.8, "b": 21.0, "sd_L": 0.5, "sd_a": 0.2, "sd_b": 0.4, "n": 30 },
+    { "name": "EX-3", "group": "exemplo", "L": 67.5, "a": 4.0, "b": 24.5, "sd_L": 0.6, "sd_a": 0.2, "sd_b": 0.5, "n": 30 }
+  ]
+}
