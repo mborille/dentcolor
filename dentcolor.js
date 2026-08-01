@@ -21,15 +21,69 @@ export const D65_2DEG = [95.047, 100.0, 108.883];
 const EPSILON = 216 / 24389; // (6/29)^3
 const KAPPA = 24389 / 27; // (29/3)^3
 
-/**
- * Limiar de perceptibilidade 50:50 em odontologia, em unidades de dE00.
- * FONTE A VERIFICAR ANTES DE PUBLICAR: Paravina et al., "Color difference
- * thresholds in dentistry", J Esthet Restor Dent, 2015.
- */
-export const PERCEPTIBILITY_THRESHOLD = 0.8;
+=========================================================
+BLOCO PARA SUBSTITUIR NO dentcolor.js  (linhas ~24 a 32)
+=========================================================
 
-/** Limiar de aceitabilidade 50:50 em odontologia. Mesma ressalva de fonte. */
-export const ACCEPTABILITY_THRESHOLD = 1.8;
+Onde está:
+
+  /**
+   * Limiar de perceptibilidade 50:50 em odontologia, em unidades de dE00.
+   * FONTE A VERIFICAR ANTES DE PUBLICAR: Paravina et al., "Color difference
+   * thresholds in dentistry", J Esthet Restor Dent, 2015.
+   */
+  export const PERCEPTIBILITY_THRESHOLD = 0.8;
+
+  /** Limiar de aceitabilidade 50:50 em odontologia. Mesma ressalva de fonte. */
+  export const ACCEPTABILITY_THRESHOLD = 1.8;
+
+Colocar:
+
+  /**
+   * Limiares visuais 50:50 em odontologia, em unidades de dE00.
+   *
+   * Fonte: Paravina RD, Ghinea R, Herrera LJ, Bona AD, Igiel C, Linninger M,
+   * Sakai M, Takahashi H, Tashkandi E, Perez MdelM. Color difference
+   * thresholds in dentistry. J Esthet Restor Dent. 2015;27 Suppl 1:S1-9.
+   * doi:10.1111/jerd.12149 - PMID 25886208
+   *
+   * Determinados para ceramica monocromatica em cabine de visualizacao.
+   * Sao referencia de controle de qualidade, nao criterio clinico automatico:
+   * o estudo relata diferenca significativa entre grupos de observadores.
+   */
+  export const PERCEPTIBILITY_THRESHOLD = 0.8;
+  export const ACCEPTABILITY_THRESHOLD = 1.8;
+
+
+=========================================================
+EQUIVALENTE PARA O dentcolor.py
+=========================================================
+
+  # Limiares visuais 50:50 em odontologia, em unidades de dE00.
+  #
+  # Fonte: Paravina RD, Ghinea R, Herrera LJ, Bona AD, Igiel C, Linninger M,
+  # Sakai M, Takahashi H, Tashkandi E, Perez MdelM. Color difference
+  # thresholds in dentistry. J Esthet Restor Dent. 2015;27 Suppl 1:S1-9.
+  # doi:10.1111/jerd.12149 - PMID 25886208
+  #
+  # Determinados para ceramica monocromatica em cabine de visualizacao.
+  # Sao referencia de controle de qualidade, nao criterio clinico automatico:
+  # o estudo relata diferenca significativa entre grupos de observadores.
+  PERCEPTIBILITY_THRESHOLD = 0.8
+  ACCEPTABILITY_THRESHOLD = 1.8
+
+
+=========================================================
+OBSERVACAO
+=========================================================
+
+Confira o texto exato que esta hoje no dentcolor.py antes de substituir.
+Eu vi o cabecalho do .js na sua tela, mas nao vi o do .py, entao o bloco
+acima e o equivalente em sintaxe Python, nao uma copia do que esta la.
+
+Mensagem de commit sugerida para os dois arquivos:
+
+  Substituir nota "fonte a verificar" pela citacao completa de Paravina 2015
 
 const rad = (d) => (d * Math.PI) / 180;
 const deg = (r) => (r * 180) / Math.PI;
